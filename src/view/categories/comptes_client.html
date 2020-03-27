@@ -1,0 +1,51 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- /.box -->
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">LISTE DES COMPTES PAR CLIENT</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>CNI</th>
+                            <th>Employeur</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {var_dump($comptes)} {$num=1} {foreach from=$comptes item=compte}
+                        <tr>
+                            <td>{$num++}</td>
+                            <td>{$compte->getNumero()}</td>
+                            <td>{$compte->getNom()}</td>
+                            <td>{$compte->getTelephone()}</td>
+                            <td>{$compte->getEmail()}</td>
+                            <td>{$compte->getCni()}</td>
+                            <td>
+                                <a href="{$url_base}Compte/delete/{$compte->getId()}" class="btn btn-danger" onclick="return confirm('Etez-vous sûre de vouloir supprimer')"><span class="fa fa-trash"></span></a>
+                                <a href="{$url_base}Compte/edit/{$compte->getId()}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </section>
+    <!-- /.content -->
+</div>
