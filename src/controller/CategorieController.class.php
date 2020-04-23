@@ -9,7 +9,6 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\CategorieRepository;
-use src\model\AgenceRepository;
 use src\model\EmployeurRepository;
 use src\model\CompteRepository;
 
@@ -34,6 +33,76 @@ class CategorieController extends Controller{
         );
         return $tab;
     }
+    public function developpeur(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/developpeurs"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+    public function bureautique(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/bureautiques"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+    public function restauration(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/restaurations"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+    public function assistant(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/assistants"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    }
+    public function SIG(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/sigs"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+    public function robotique(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/robotiques"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+    public function statistique(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("categories/statistiques"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+
+
+
+
+
+
+
     public function add(){
         $employeur = new EmployeurRepository();
         $data['employeurs'] = $employeur->listeEmployeur();

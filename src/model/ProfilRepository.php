@@ -29,7 +29,7 @@ class ProfilRepository extends Model{
 			return $profil->getId();
 		}
 	}
-	public function listeProfil(){
+	public function listeProfils(){
 		if($this->db != null)
 		{
 			return $this->db->createQuery("SELECT p FROM Profil p")->getResult();

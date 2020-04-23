@@ -9,7 +9,7 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\OffreRepository;
-use src\model\AgenceRepository;
+use src\model\CategorieRepository;
 use src\model\EmployeurRepository;
 use src\model\CompteRepository;
 
@@ -35,14 +35,13 @@ class OffreController extends Controller{
         return $tab;
     }
     public function add(){
-        $employeur = new EmployeurRepository();
-        $data['employeurs'] = $employeur->listeEmployeur();
+        $categories = new CategorieRepository();
+        $data['categories'] = $categories->listeCategorie();
         $tab = array(
-            $this->view->load("layout/header"),
-            $this->view->load("layout/sidebar"),
-            $this->view->load("layout/topbar"),
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
             $this->view->load("offres/add",$data),
-            $this->view->load("layout/footer"),
+            $this->view->load("layout_front/footer"),
         );
         return $tab;
     }
@@ -55,28 +54,12 @@ class OffreController extends Controller{
         
         extract($_POST);
         $offreObject = new Offre();
-        $offreObject->setPrenom(addslashes($prenom));
-        $offreObject->setNom(addslashes($nom));
-        $offreObject->setCni(addslashes($cni));
-        $offreObject->setEmail(addslashes($email));
-        $offreObject->setTelephone(addslashes($telephone));
-        $offreObject->setAdresse(addslashes($adresse));
-        $offreObject->setLogin(addslashes($login));
-        $offreObject->setPassword(sha1(addslashes($password)));
-        $offreObject->setEmployeur($offre->getEmployeur($employeur_id));
-
-        $compte = new CompteRepository();
-        $compteObject = new Compte();
-
-        $date = new DateTime();
-        $compteObject->setCreated_at($date);
-        $compteObject->setNumero(addslashes('EEE444'));
-        $compteObject->setSolde(addslashes($solde));
-        $compteObject->setEtat(addslashes('actif'));
-        $compte->addCompte($compteObject);
-
+        $offreObject->setlibelle(addslashes($libelle));
+        $offreObject->setFavori(addslashes($favori));
+        $offreObject->setEntreprise($offre->getEntreprise($entreprise_id));
+        $offreObject->setCategories($offre->getCategorie($categorie_id));
         $offre->addOffre($offreObject);
-        return $this->index();
+        return $this->add();
     }
     /** 
      * url pattern for this method

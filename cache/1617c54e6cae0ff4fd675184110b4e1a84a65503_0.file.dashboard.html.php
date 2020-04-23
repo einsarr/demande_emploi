@@ -1,4 +1,28 @@
-{var_dump($resultat->getNom())}
+<?php
+/* Smarty version 3.1.30, created on 2020-04-17 01:04:57
+  from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\admin\dashboard.html" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_5e98e499be9e85_25214549',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '1617c54e6cae0ff4fd675184110b4e1a84a65503' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\admin\\dashboard.html',
+      1 => 1587078293,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5e98e499be9e85_25214549 (Smarty_Internal_Template $_smarty_tpl) {
+echo var_dump($_smarty_tpl->tpl_vars['resultat']->value->getNom());?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -75,4 +99,5 @@
         </div>
     </section>
     <!-- /.content -->
-</div>
+</div><?php }
+}

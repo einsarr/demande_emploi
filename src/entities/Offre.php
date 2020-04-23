@@ -14,13 +14,13 @@ class Offre
     /** @Column(type="string") **/
     private $favori;
     /**
-     * Many Offres have one entreprise. This is the owning side.
+     * Many Offres have one User. This is the owning side.
      * @ManyToOne(targetEntity="User", inversedBy="offres")
      * @JoinColumn(name="entreprise_id", referencedColumnName="id")
      */
     private $entreprise;
     /**
-     * Many Offres have one catégorie. This is the owning side.
+     * Many Offres have one categorie. This is the owning side.
      * @ManyToOne(targetEntity="Categorie", inversedBy="offres")
      * @JoinColumn(name="categorie_id", referencedColumnName="id")
      */

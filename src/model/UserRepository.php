@@ -23,13 +23,7 @@ class UserRepository extends Model{
 	{
 		return $this->db->getRepository('user')->findBy(array('login' => $login, 'password' => $password));
 	}
-	public function getAgence($id)
-	{
-		if($this->db != null)
-		{
-			return $this->db->getRepository('Agence')->find(array('id' => $id));
-		}
-	}
+	
 	public function getProfil($id)
 	{
 		if($this->db != null)

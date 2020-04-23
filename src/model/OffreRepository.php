@@ -29,6 +29,23 @@ class OffreRepository extends Model{
 			return $offre->getId();
 		}
 	}
+	public function getCategorie($id)
+	{
+		if($this->db != null)
+		{
+			return $this->db->getRepository('Categorie')->find(array('id' => $id));
+		}
+	}
+	/**
+	 * Afficher l'entreprise provisoirement -- ça doit etre fait en session
+	 */
+	public function getEntreprise($id)
+	{
+		if($this->db != null)
+		{
+			return $this->db->getRepository('User')->find(array('id' => $id));
+		}
+	}
 	public function listeOffre(){
 		if($this->db != null)
 		{

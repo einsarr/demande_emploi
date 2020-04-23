@@ -25,24 +25,17 @@ class WelcomeController extends Controller{
         ) ;
          return $data;    
     }
-    public function seConnecter(){  
+    
+    public function presentation(){  
         $data = array(
             $this->view->load("layout_front/header"),
             $this->view->load("layout_front/topbar"),
-            $this->view->load("users/connect"),
+            $this->view->load("layout_front/presentation"),
             $this->view->load("layout_front/footer"),
         ) ;
          return $data;    
     } 
-    public function addCompte(){  
-        $data = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("users/add"),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $data;    
-    } 
+    
     
     public function dashboard(){  
        $data = array(

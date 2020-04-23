@@ -11,96 +11,33 @@ use libs\system\Controller;
 use src\model\UserRepository;
 use src\model\AgenceRepository;
 use src\model\ProfilRepository;
-use src\model\CaisseRepository;
-use src\model\ClientRepository;
 
 class UserController extends Controller{
     public function __construct(){
         parent::__construct();
     }
-    
-    public function deconnection(){
-        //session_destroy();
-        return  $this->view->load("admin/connexion");
-    }
-    public function login(){
-        extract($_POST);
-        $user = new UserRepository();
-        $resultat= $user->login($login,sha1($password));
-
-       
-        if(!$resultat)
-        {
-            $data['message'] = 'Login et/ou mot de passe incorrecte';
-            $tab = array(
-                $this->view->load("admin/connexion",$data),
-            );
-        }
-        
-        else{
-            session_start();
-            $data["resultat"]=$resultat;
-            //$client = new ClientRepository();
-            //$data["client"] = $client->nombre_clients();
-            $tab = array(
-                $this->view->load("layout/header"),
-                $this->view->load("layout/sidebar"),
-                $this->view->load("layout/topbar"),
-                $this->view->load("admin/dashboard",$data),
-                $this->view->load("layout/footer"),
-            );
-        }
-        return $tab;
-    }
-    
-    public function add_emp_caisse($client_id){
-        $agence = new AgenceRepository();
-        $user = new UserRepository();
-        $caisses = new CaisseRepository();
-        $data['agences'] = $agence->listeAgence();
-        $data['user'] = $user->getUser($client_id);
-        $data['caisses'] = $caisses->listeCaisse();
+    public function seConnecter(){  
         $tab = array(
-            $this->view->load("layout/header"),
-            $this->view->load("layout/sidebar"),
-            $this->view->load("layout/topbar"),
-            $this->view->load("users/user_caisse",$data),
-            $this->view->load("layout/footer"),
-        );
-        return $tab;
-    }
-    /** 
-     * url pattern for this method
-     * localhost/projectName/User/
-     */
-
-    public function index(){
-        $user = new UserRepository();
-        $data['users'] = $user->listeUser();
-        $tab = array(
-            $this->view->load("layout/header"),
-            $this->view->load("layout/sidebar"),
-            $this->view->load("layout/topbar"),
-            $this->view->load("users/liste",$data),
-            $this->view->load("layout/footer"),
-        );
-        return $tab;
-    }
-    public function add(){
-        $agence = new AgenceRepository();
-        $data['agences'] = $agence->listeAgence();
-        $profil = new ProfilRepository();
-        $data['profils'] = $profil->listeProfil();
-        $tab = array(
-            $this->view->load("layout/header"),
-            $this->view->load("layout/sidebar"),
-            $this->view->load("layout/topbar"),
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("users/connect"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $tab;    
+    } 
+    public function addCompte(){  
+        $offre = new UserRepository();
+        $profils = new ProfilRepository();
+        $data['profils'] = $profils->listeProfils();
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
             $this->view->load("users/add",$data),
-            $this->view->load("layout/footer"),
-        );
-        return $tab;
-    }
-     /** 
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    } 
+    /** 
      * url pattern for this method
      * localhost/projectName/User/add
      */
@@ -108,19 +45,72 @@ class UserController extends Controller{
         $user = new UserRepository();
         extract($_POST);
         $userObject = new User();
-        
-        $userObject->setPrenom(addslashes($prenom));
-        $userObject->setNom(addslashes($nom));
+        if(!empty($_FILES))
+        {
+            $avatar = $_FILES['avatar']['name'];
+            $file_extension = strrchr($avatar,".");
+
+            $file_tmp_name=$_FILES['avatar']['tmp_name'];
+            $file_dest ="public/avatar/".$avatar;
+            $extensions_autorisees = array('.png','.gif','.jpg','.jpeg');
+            if(in_array($file_extension,$extensions_autorisees))
+            {
+                if(move_uploaded_file($file_tmp_name,$file_dest))
+                {
+                    echo "<script>alert('Enrégistrement réussie avec succès.')</script>";
+                }else{
+                    echo "<script>alert('Une erreur s'est produit.')</script>";
+                }
+            }else{
+                echo "<script>alert('Seuls les fichiers images sont autorisés.')</script>";
+            }
+        }
+        $userObject->setNom_complet(addslashes($nom_complet));
         $userObject->setEmail(addslashes($email));
         $userObject->setTelephone(addslashes($telephone));
         $userObject->setAdresse(addslashes($adresse));
+        $userObject->setAvatar(addslashes($avatar));
         $userObject->setLogin(addslashes($login));
         $userObject->setPassword(sha1(addslashes($password)));
-        $userObject->setAgence($user->getAgence($agence_id));
         $userObject->setProfil($user->getProfil($profil_id));
         $user->addUser($userObject);
-        return $this->index();
+        return $this->seConnecter();
     }
+    public function entreprises(){  
+        $data = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("users/entreprises"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $data;    
+    }
+    public function deconnection(){
+        return  $this->view->load("admin/connexion");
+    }
+    public function login(){
+        extract($_POST);
+        $user = new UserRepository();
+        $resultat= $user->login($login,sha1($password));
+        if(!$resultat)
+        {
+            $data['message'] = 'Login et/ou mot de passe incorrecte';
+            return $this->seConnecter();
+        }
+        else{
+            $data['user'] = $resultat;
+            $tab = array(
+                $this->view->load("layout/header"),
+                $this->view->load("layout/topbar"),
+                //$this->view->load("layout/sidebar"),
+                $this->view->load("admin/dashboard",$data),
+                $this->view->load("layout/footer"),
+            );
+        }
+        return $tab;
+    }
+    
+    
     /** 
      * url pattern for this method
      * localhost/projectName/User/edit/value
