@@ -16,13 +16,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{$url_base}Categorie/developpeur">Développeur</a></li>
-                            <li><a href="{$url_base}Categorie/bureautique">Bureautique</a></li>
-                            <li><a href="{$url_base}Categorie/restauration">Restauration</a></li>
-                            <li><a href="{$url_base}Categorie/assistant">Assistanat de direction</a></li>
-                            <li><a href="{$url_base}Categorie/SIG">SIG</a></li>
-                            <li><a href="{$url_base}Categorie/robotique">Robotique</a></li>
-                            <li><a href="{$url_base}Categorie/statistique">Statistique</a></li>
+                            {if isset($categories)} {foreach from=$categories item=categorie}
+                            <li><a href="{$url_base}Offre/get/{$categorie->getId()}">{$categorie->getLibelle()}</a></li>
+                            {/foreach} {/if}
                         </ul>
                     </li>
                 </ul>

@@ -29,7 +29,7 @@ class CategorieRepository extends Model{
 			return $categorie->getId();
 		}
 	}
-	public function listeCategorie(){
+	public function listeCategories(){
 		if($this->db != null)
 		{
 			return $this->db->createQuery("SELECT p FROM Categorie p")->getResult();

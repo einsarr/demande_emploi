@@ -9,6 +9,7 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/
 use libs\system\Controller;
 use src\model\OffreRepository;
+use src\model\CategorieRepository;
 class WelcomeController extends Controller{
 
     public function __construct(){
@@ -20,13 +21,16 @@ class WelcomeController extends Controller{
     public function index(){  
         $offres = new OffreRepository();
         $data['offres'] = $offres->listeOffres();
-        $data = array(
-            $this->view->load("layout_front/header"),
+
+        $categories = new CategorieRepository();
+        $data['categories'] = $categories->listeCategories();
+        $tab = array(
+            $this->view->load("layout_front/header",$data),
             $this->view->load("layout_front/topbar"),
             $this->view->load("admin/connexion",$data),
-            $this->view->load("layout_front/footer"),
+            $this->view->load("layout_front/footer",),
         ) ;
-         return $data;    
+         return $tab;    
     }
     
     public function presentation(){  

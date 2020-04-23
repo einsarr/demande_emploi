@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-04-23 02:36:49
+/* Smarty version 3.1.30, created on 2020-04-23 02:43:02
   from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\admin\connexion.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ea0e321b12c10_09098492',
+  'unifunc' => 'content_5ea0e4965141f5_55112633',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07b4b79a0d0d0cf1565b04241b7a87a225f67d0d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\admin\\connexion.html',
-      1 => 1587602207,
+      1 => 1587602577,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ea0e321b12c10_09098492 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ea0e4965141f5_55112633 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Full Width Column -->
 <div class="content-wrapper">
@@ -41,21 +41,21 @@ function content_5ea0e321b12c10_09098492 (Smarty_Internal_Template $_smarty_tpl)
                         <img src="http://placehold.it/900x500/39CCCC/ffffff&text=Vous+chercher+un+Job" alt="First slide" width="100%">
 
                         <div class="carousel-caption">
-                            First Slide
+                            Job
                         </div>
                     </div>
                     <div class="item">
                         <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=Vous+chercher+un+stage" alt="Second slide" width="100%">
 
                         <div class="carousel-caption">
-                            Second Slide
+                            stage
                         </div>
                     </div>
                     <div class="item">
                         <img src="http://placehold.it/900x500/f39c12/ffffff&text=Vous+êtes+Entrepreneur" alt="Third slide" width="100%">
 
                         <div class="carousel-caption">
-                            Third Slide
+                            Employeur
                         </div>
                     </div>
                 </div>
