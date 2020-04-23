@@ -28,9 +28,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {$num=1} {foreach from=$profils item=profil}
+                        {foreach from=$profils item=profil}
                         <tr>
-                            <td>{$num++}</td>
+                            <td>{++$num}</td>
                             <td>{$profil->getLibelle()}</td>
                             <td>{$profil->getDescription()}</td>
                             <td>

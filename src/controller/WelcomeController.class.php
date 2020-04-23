@@ -8,6 +8,7 @@ POUR TOUTE MODIFICATION VISANT A L'AMELIORER.
 VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/
 use libs\system\Controller;
+use src\model\OffreRepository;
 class WelcomeController extends Controller{
 
     public function __construct(){
@@ -17,10 +18,12 @@ class WelcomeController extends Controller{
      * use: localhost/projectName/Welcome/
      */
     public function index(){  
+        $offres = new OffreRepository();
+        $data['offres'] = $offres->listeOffres();
         $data = array(
             $this->view->load("layout_front/header"),
             $this->view->load("layout_front/topbar"),
-            $this->view->load("admin/connexion"),
+            $this->view->load("admin/connexion",$data),
             $this->view->load("layout_front/footer"),
         ) ;
          return $data;    

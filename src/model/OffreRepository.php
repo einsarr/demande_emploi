@@ -46,7 +46,7 @@ class OffreRepository extends Model{
 			return $this->db->getRepository('User')->find(array('id' => $id));
 		}
 	}
-	public function listeOffre(){
+	public function listeOffres(){
 		if($this->db != null)
 		{
 			return $this->db->createQuery("SELECT p FROM Offre p")->getResult();
