@@ -9,6 +9,7 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/
 use libs\system\Controller;
 use src\model\OffreRepository;
+use src\model\UserRepository;
 use src\model\CategorieRepository;
 class WelcomeController extends Controller{
 
@@ -33,14 +34,16 @@ class WelcomeController extends Controller{
          return $tab;    
     }
     
-    public function presentation(){  
-        $data = array(
+    public function presentation(){
+        $entreprises = new UserRepository();
+        $data['entreprises'] = $entreprises->listeEntreprises();  
+        $tab = array(
             $this->view->load("layout_front/header"),
             $this->view->load("layout_front/topbar"),
-            $this->view->load("layout_front/presentation"),
+            $this->view->load("layout_front/presentation",$data),
             $this->view->load("layout_front/footer"),
         ) ;
-         return $data;    
+         return $tab;    
     } 
     
     

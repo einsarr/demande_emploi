@@ -52,11 +52,19 @@ class OffreRepository extends Model{
 			return $this->db->createQuery("SELECT p FROM Offre p")->getResult();
 		}
 	}
+	public function listeOffresByIdCat($id)
+	{
+		if($this->db != null)
+		{
+			return $this->db->getRepository('Offre')->findAll(array('categorie_id' => $id));
+		}
+		
+	}
 	public function getOffre($id)
 	{
 		if($this->db != null)
 		{
-			return $this->db->getRepository('Offre')->find(array('id' => $id));
+			return $this->db->getRepository('Offre')->find(array('categorie_id' => $id));
 		}
 	}
 	

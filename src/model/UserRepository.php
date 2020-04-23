@@ -47,6 +47,17 @@ class UserRepository extends Model{
 			return $this->db->createQuery("SELECT p FROM User p")->getResult();
 		}
 	}
+	/**
+	 * Liste des entreprises
+	 */
+	public function listeEntreprises()
+	{
+		if($this->db != null)
+		{
+			//return $this->db->getRepository('User')->find(array('profil_id' => 1));
+			return $this->db->getRepository('User')->findAll(array('profil_id' => 1));
+		}
+	}
 	public function getUser($id)
 	{
 		if($this->db != null)

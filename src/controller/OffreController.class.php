@@ -36,7 +36,7 @@ class OffreController extends Controller{
     }
     public function add(){
         $categories = new CategorieRepository();
-        $data['categories'] = $categories->listeCategorie();
+        $data['categories'] = $categories->listeCategories();
         $tab = array(
             $this->view->load("layout_front/header"),
             $this->view->load("layout_front/topbar"),
@@ -60,6 +60,19 @@ class OffreController extends Controller{
         $offreObject->setCategories($offre->getCategorie($categorie_id));
         $offre->addOffre($offreObject);
         return $this->add();
+    }
+    public function get($categorie_id){
+        $offre = new OffreRepository();
+        $categorie = new CategorieRepository();
+        $data['offres'] = $offre->listeOffresByIdCat($categorie_id);
+        $data['categorie'] = $categorie->getCategorie($categorie_id);
+        $tab = array(
+            $this->view->load("layout_front/header",$data),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("offres/offres_categorie",$data),
+            $this->view->load("layout_front/footer",),
+        );
+        return $tab;
     }
     /** 
      * url pattern for this method
@@ -114,12 +127,7 @@ class OffreController extends Controller{
 
         return $this->view->load("offres/get_id", $data);
     }
-    public function get($id){
-        
-        $data['offre'] = $tdb->getOffre($id);
-        
-        return $this->view->load("offres/get", $data);
-    }
+   
     /** 
      * url pattern for this method
      * localhost/projectName/Offre/liste
