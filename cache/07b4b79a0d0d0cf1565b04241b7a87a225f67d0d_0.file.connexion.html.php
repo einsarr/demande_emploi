@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-04-23 02:43:02
+/* Smarty version 3.1.30, created on 2020-04-24 04:02:35
   from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\admin\connexion.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ea0e4965141f5_55112633',
+  'unifunc' => 'content_5ea248bb85e592_71551975',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07b4b79a0d0d0cf1565b04241b7a87a225f67d0d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\admin\\connexion.html',
-      1 => 1587602577,
+      1 => 1587693752,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ea0e4965141f5_55112633 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ea248bb85e592_71551975 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Full Width Column -->
 <div class="content-wrapper">
@@ -38,22 +38,25 @@ function content_5ea0e4965141f5_55112633 (Smarty_Internal_Template $_smarty_tpl)
                 </ol>
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="http://placehold.it/900x500/39CCCC/ffffff&text=Vous+chercher+un+Job" alt="First slide" width="100%">
-
+                        <!--<img src="http://placehold.it/900x500/39CCCC/ffffff&text=Vous+chercher+un+Job" alt="First slide" width="100%">-->
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/image/demande_emploi.png" alt="First slide" width="100%">
                         <div class="carousel-caption">
                             Job
                         </div>
                     </div>
                     <div class="item">
-                        <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=Vous+chercher+un+stage" alt="Second slide" width="100%">
-
+                        <!-- <img src="http://placehold.it/900x500/3c8dbc/ffffff&text=Vous+chercher+un+stage" alt="Second slide" width="100%">-->
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/image/stagiaire.jpg" alt="First slide" width="100%">
                         <div class="carousel-caption">
                             stage
                         </div>
                     </div>
                     <div class="item">
-                        <img src="http://placehold.it/900x500/f39c12/ffffff&text=Vous+êtes+Entrepreneur" alt="Third slide" width="100%">
-
+                        <!--<img src="http://placehold.it/900x500/f39c12/ffffff&text=Vous+êtes+Entrepreneur" alt="Third slide" width="100%">-->
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/image/offre_emploi.png" alt="First slide" width="100%">
                         <div class="carousel-caption">
                             Employeur
                         </div>
@@ -78,7 +81,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['offre']->value) {
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3><?php echo $_smarty_tpl->tpl_vars['offre']->value->getCategories()->getLibelle();?>
+                            <h3><?php echo $_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getLibelle();?>
  </h3>
 
                             <p><?php echo $_smarty_tpl->tpl_vars['offre']->value->getlibelle();?>
@@ -99,7 +102,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             </div>
         </section>
         <!-- /.content -->
-    </div>
-    <!-- /.container -->
-</div><?php }
+        </!--<img>
+        <!-- /.container -->
+        </img><?php }
 }
