@@ -72,6 +72,18 @@ class OffreController extends Controller{
         );
         return $tab;
     }
+    public function offre_search(){
+        extract($_POST);
+        $offres = new OffreRepository();
+        $data['offres'] = $offres->listeOffresByKeyWord($motCle);
+        $tab = array(
+            $this->view->load("layout_front/header",$data),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("offres/offres_search",$data),
+            $this->view->load("layout_front/footer",),
+        );
+        return $tab;
+    }
     /** 
      * url pattern for this method
      * localhost/projectName/Offre/edit/value

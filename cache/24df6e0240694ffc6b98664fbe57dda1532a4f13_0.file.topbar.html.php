@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-04-23 03:04:17
+/* Smarty version 3.1.30, created on 2020-04-24 03:49:44
   from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\layout_front\topbar.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ea0e991c9ae04_83108315',
+  'unifunc' => 'content_5ea245b86d6047_56303850',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '24df6e0240694ffc6b98664fbe57dda1532a4f13' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\layout_front\\topbar.html',
-      1 => 1587603312,
+      1 => 1587692981,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ea0e991c9ae04_83108315 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ea245b86d6047_56303850 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -61,9 +61,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="search" method="post" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Offre/offre_search">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+                        <input type="text" name="motCle" class="form-control" id="navbar-search-input" placeholder="Saisir un mot clé">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="search">
                     </div>
                 </form>
             </div>

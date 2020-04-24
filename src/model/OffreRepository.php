@@ -52,6 +52,16 @@ class OffreRepository extends Model{
 			return $this->db->createQuery("SELECT p FROM Offre p")->getResult();
 		}
 	}
+	
+
+	public function listeOffresByKeyWord($motCle)
+	{
+		if($this->db != null)
+		{
+			$query = $this->db->createQuery("SELECT o FROM Offre o WHERE o.libelle LIKE '%$motCle%'");
+			return $query->getResult();	
+		}
+	}
 	public function listeOffresByIdCat($id)
 	{
 		if($this->db != null)
