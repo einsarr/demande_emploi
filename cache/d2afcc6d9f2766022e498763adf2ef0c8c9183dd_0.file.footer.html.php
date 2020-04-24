@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-03-26 20:18:26
+/* Smarty version 3.1.30, created on 2020-04-23 22:12:35
   from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\layout_front\footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5e7d00022ea484_64719161',
+  'unifunc' => 'content_5ea1f6b334d692_08886638',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd2afcc6d9f2766022e498763adf2ef0c8c9183dd' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\layout_front\\footer.html',
-      1 => 1585250054,
+      1 => 1587606095,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e7d00022ea484_64719161 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ea1f6b334d692_08886638 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
     <div class="container">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.4.0
+            <b>SamameMVC</b> 2.4.0
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2020 <a href="https://adminlte.io">DITI4</a>.</strong> Tous les droits réservés.
     </div>
     <!-- /.container -->
 </footer>

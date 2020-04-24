@@ -243,4 +243,26 @@ class Categorie extends \Categorie implements \Doctrine\ORM\Proxy\Proxy
         return parent::setDescription($description);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getOffres()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOffres', []);
+
+        return parent::getOffres();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOffres($offres)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOffres', [$offres]);
+
+        return parent::setOffres($offres);
+    }
+
 }

@@ -62,9 +62,7 @@ class OffreController extends Controller{
         return $this->add();
     }
     public function get($categorie_id){
-        $offre = new OffreRepository();
         $categorie = new CategorieRepository();
-        $data['offres'] = $offre->listeOffresByIdCat($categorie_id);
         $data['categorie'] = $categorie->getCategorie($categorie_id);
         $tab = array(
             $this->view->load("layout_front/header",$data),

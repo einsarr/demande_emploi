@@ -24,7 +24,7 @@ class Offre
      * @ManyToOne(targetEntity="Categorie", inversedBy="offres")
      * @JoinColumn(name="categorie_id", referencedColumnName="id")
      */
-    private $categories;
+    private $categorie;
     /**
      * One Offre has many Reponses. This is the inverse side.
      * @OneToMany(targetEntity="Reponse", mappedBy="offre")
@@ -79,14 +79,14 @@ class Offre
     {
         $this->entreprise = $entreprise;
     }
-    public function getCategories()
+    public function getCategorie()
     {
-        return $this->categories;
+        return $this->categorie;
     }
     
-    public function setCategories($categories)
+    public function setCategorie($categorie)
     {
-        $this->categories = $categories;
+        $this->categorie = $categorie;
     }
 
 }

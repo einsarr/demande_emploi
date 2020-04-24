@@ -49,6 +49,15 @@ class Categorie
     {
         $this->description = $description;
     }
+    public function getOffres()
+    {
+        return $this->offres;
+    }
+    
+    public function setOffres($offres)
+    {
+        $this->offres = $offres;
+    }
 
 }
 
