@@ -29,13 +29,22 @@ class UserController extends Controller{
         $offre = new UserRepository();
         $profils = new ProfilRepository();
         $data['profils'] = $profils->listeProfils();
-        $data = array(
+        $tab = array(
             $this->view->load("layout_front/header"),
             $this->view->load("layout_front/topbar"),
             $this->view->load("users/add",$data),
             $this->view->load("layout_front/footer"),
         ) ;
-         return $data;    
+         return $tab;    
+    } 
+    public function profil(){  
+        $tab = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("users/profil"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $tab;    
     } 
     /** 
      * url pattern for this method

@@ -53,7 +53,9 @@ class OffreRepository extends Model{
 		}
 	}
 	
-
+	/**
+	 * DQL
+	 */
 	public function listeOffresByKeyWord($motCle)
 	{
 		if($this->db != null)

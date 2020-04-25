@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-04-24 03:49:44
+/* Smarty version 3.1.30, created on 2020-04-25 05:25:38
   from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\layout_front\topbar.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ea245b86d6047_56303850',
+  'unifunc' => 'content_5ea3adb2b30697_02161535',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '24df6e0240694ffc6b98664fbe57dda1532a4f13' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\layout_front\\topbar.html',
-      1 => 1587692981,
+      1 => 1587785133,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ea245b86d6047_56303850 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ea3adb2b30697_02161535 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -38,6 +38,8 @@ Welcome" class="navbar-brand"><b>Accueil</b></a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 Welcome/presentation">Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Cv/add">Mon CV</a></li>
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 Offre/add">Ajouter une offre</a></li>
                     <li class="dropdown">
@@ -94,19 +96,29 @@ Offre/offre_search">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="fa fa-lock"> Créer un compte</span>
+                            <span class="fa fa-lock"> Compte</span>
                         </a>
                         <ul class="dropdown-menu">
 
                             <li class="user-footer">
                                 <div class="pull-left">
                                     <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-User/addCompte" class="btn btn-default btn-flat">Ouvrir un compte</a>
+User/addCompte" class="btn btn-info btn-flat">Ouvrir un compte</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-User/seConnecter" class="btn btn-default btn-flat">Se connecter</a>
+User/seConnecter" class="btn btn-primary btn-flat">Se connecter</a>
+                                </div><br>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+User/profil" class="btn btn-warning btn-flat">Mon profil</a>
                                 </div>
+                                <div class="pull-right">
+                                    <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+User/seDeconnecter" class="btn btn-danger btn-flat">Se Déconnecter</a>
+                                </div><br>
                             </li>
                         </ul>
                     </li>

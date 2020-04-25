@@ -37,6 +37,15 @@ class CvController extends Controller{
         );
         return $tab;
     }
+    public function add(){  
+        $tab = array(
+            $this->view->load("layout_front/header"),
+            $this->view->load("layout_front/topbar"),
+            $this->view->load("cvs/add"),
+            $this->view->load("layout_front/footer"),
+        ) ;
+         return $tab;    
+    } 
     public function liste_cv_client($client_id){
         $cvs = new CvRepository();
         

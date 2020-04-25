@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-04-24 03:49:51
+/* Smarty version 3.1.30, created on 2020-04-25 01:33:55
   from "C:\xampp\htdocs\mesProjets\demande_emploi\src\view\offres\offres_search.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ea245bfaac2b1_39683910',
+  'unifunc' => 'content_5ea37763dabe00_22038524',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fed2f23cc8df6dfa2bc8499649480d6d80591a6d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\mesProjets\\demande_emploi\\src\\view\\offres\\offres_search.html',
-      1 => 1587692764,
+      1 => 1587693384,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ea245bfaac2b1_39683910 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ea37763dabe00_22038524 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <div class="content-wrapper">
     <div class="container">
@@ -46,7 +46,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['offre']->value) {
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <?php
