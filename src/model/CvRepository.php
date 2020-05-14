@@ -26,6 +26,13 @@ class CvRepository extends Model{
 			return $this->db->getRepository('Employeur')->find(array('id' => $id));
 		}
 	}
+	public function getUser($id)
+	{
+		if($this->db != null)
+		{
+			return $this->db->getRepository('User')->find(array('id' => $id));
+		}
+	}
 	public function getProfil($id)
 	{
 		if($this->db != null)

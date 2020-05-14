@@ -9,13 +9,23 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\ReponseRepository;
-use src\model\AgenceRepository;
-use src\model\EmployeurRepository;
-use src\model\CompteRepository;
 
 class ReponseController extends Controller{
     public function __construct(){
         parent::__construct();
+    }
+
+    public function save(){
+        $reponse = new ReponseRepository();
+        
+        extract($_POST);
+        $reponseObject = new Reponse();
+        $reponseObject->setlibelle(addslashes($libelle));
+        $reponseObject->setDescription(addslashes($description));
+        $reponseObject->setOffre($reponse->getOffre($offre_id));
+        $reponse->addReponse($reponseObject);
+        $data['message_success'] = "Enrégistrement réussie";
+        $this->view->load("offres/postuler",$data); 
     }
     /** 
      * url pattern for this method
@@ -46,38 +56,7 @@ class ReponseController extends Controller{
         );
         return $tab;
     }
-     /** 
-     * url pattern for this method
-     * localhost/projectName/Reponse/add
-     */
-    public function save(){
-        $reponse = new ReponseRepository();
-        
-        extract($_POST);
-        $reponseObject = new Reponse();
-        $reponseObject->setPrenom(addslashes($prenom));
-        $reponseObject->setNom(addslashes($nom));
-        $reponseObject->setCni(addslashes($cni));
-        $reponseObject->setEmail(addslashes($email));
-        $reponseObject->setTelephone(addslashes($telephone));
-        $reponseObject->setAdresse(addslashes($adresse));
-        $reponseObject->setLogin(addslashes($login));
-        $reponseObject->setPassword(sha1(addslashes($password)));
-        $reponseObject->setEmployeur($reponse->getEmployeur($employeur_id));
-
-        $compte = new CompteRepository();
-        $compteObject = new Compte();
-
-        $date = new DateTime();
-        $compteObject->setCreated_at($date);
-        $compteObject->setNumero(addslashes('EEE444'));
-        $compteObject->setSolde(addslashes($solde));
-        $compteObject->setEtat(addslashes('actif'));
-        $compte->addCompte($compteObject);
-
-        $reponse->addReponse($reponseObject);
-        return $this->index();
-    }
+     
     /** 
      * url pattern for this method
      * localhost/projectName/Reponse/edit/value

@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-05-13 11:57:48
+/* Smarty version 3.1.30, created on 2020-05-14 14:46:17
   from "C:\wamp\www\demande_emploi\src\view\layout_front\footer.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ebbe0bc405294_64555293',
+  'unifunc' => 'content_5ebd59b9039e54_55434547',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ebbe0bc405294_64555293 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebd59b9039e54_55434547 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- /.content-wrapper -->
 <footer class="main-footer">

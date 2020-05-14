@@ -11,6 +11,12 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="text-center">
+                            {if isset($message_success)} <span class="text-success">{$message_success}</span> {/if}
+                        </div>
+                        <div class="text-center">
+                            {if isset($message_error)} <span class="text-danger">{$message_error}</span> {/if}
+                        </div>
                         <form method="POST" action="{$url_base}Offre/save" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="entreprise_id">L'entreprise</label>

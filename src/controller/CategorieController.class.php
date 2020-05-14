@@ -9,8 +9,6 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\CategorieRepository;
-use src\model\CategorieRepository;
-use src\model\EmployeurRepository;
 
 class CategorieController extends Controller{
     public function __construct(){
@@ -34,15 +32,7 @@ class CategorieController extends Controller{
         return $tab;
     }
     public function add(){
-        $categories = new CategorieRepository();
-        $data['categories'] = $categories->listeCategories();
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("categories/add",$data),
-            $this->view->load("layout_front/footer"),
-        );
-        return $tab;
+        $this->view->load("categories/add");
     }
      /** 
      * url pattern for this method
@@ -54,11 +44,10 @@ class CategorieController extends Controller{
         extract($_POST);
         $categorieObject = new Categorie();
         $categorieObject->setlibelle(addslashes($libelle));
-        $categorieObject->setFavori(addslashes($favori));
-        $categorieObject->setEntreprise($categorie->getEntreprise($entreprise_id));
-        $categorieObject->setCategories($categorie->getCategorie($categorie_id));
+        $categorieObject->setDescription(addslashes($description));
         $categorie->addCategorie($categorieObject);
-        return $this->add();
+        $data['message_success'] = "Enrégistrement réussie";
+        $this->view->load("categories/add",$data); 
     }
     /** 
      * url pattern for this method

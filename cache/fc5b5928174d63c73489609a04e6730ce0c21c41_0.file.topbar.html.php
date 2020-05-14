@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-05-13 16:24:44
+/* Smarty version 3.1.30, created on 2020-05-14 16:06:10
   from "C:\wamp\www\demande_emploi\src\view\layout_front\topbar.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ebc1f4cb15194_52976292',
+  'unifunc' => 'content_5ebd6c7205e2c8_24871726',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fc5b5928174d63c73489609a04e6730ce0c21c41' => 
     array (
       0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\layout_front\\topbar.html',
-      1 => 1589387082,
+      1 => 1589472366,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ebc1f4cb15194_52976292 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebd6c7205e2c8_24871726 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <header class="main-header">
     <nav class="navbar navbar-static-top">
@@ -38,10 +38,14 @@ Welcome" class="navbar-brand"><b>Accueil</b></a>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 Welcome/presentation">Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 Cv/add">Mon CV</a></li>
+
                     <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
 Offre/add">Ajouter une offre</a></li>
+                    <li><a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+Categorie/add">Ajouter catégorie</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -110,29 +114,32 @@ User/addCompte" class="btn btn-info btn-flat">Ouvrir un compte</a>
 User/seConnecter" class="btn btn-primary btn-flat">Se connecter</a>
                                 </div><br>
                             </li>
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-User/profil" class="btn btn-warning btn-flat">Mon profil</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-User/seDeconnecter" class="btn btn-danger btn-flat">Se Déconnecter</a>
-                                </div><br>
-                            </li>
+
                         </ul>
                     </li>
-                    <?php if (isset($_smarty_tpl->tpl_vars['utilisateur']->value)) {?> }
+                    <?php if (isset($_smarty_tpl->tpl_vars['user']->value)) {?>
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="fa fa-user"> 
-                                <?php echo $_smarty_tpl->tpl_vars['utiliateur']->value->getEmail();?>
+                                <?php echo $_smarty_tpl->tpl_vars['user']->value->getNom_complet();?>
 
                             </span>
                         </a>
+                        <ul class="dropdown-menu">
+
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+User/profil" class="btn btn-warning btn-flat">Mon profil</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="" class="btn btn-danger btn-flat">Se Déconnecter</a>
+                                </div><br>
+                            </li>
+                        </ul>
                     </li>
                     <?php }?>
                 </ul>

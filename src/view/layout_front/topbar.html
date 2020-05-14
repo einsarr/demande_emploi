@@ -12,8 +12,11 @@
             <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{$url_base}Welcome/presentation">Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+
                     <li><a href="{$url_base}Cv/add">Mon CV</a></li>
+
                     <li><a href="{$url_base}Offre/add">Ajouter une offre</a></li>
+                    <li><a href="{$url_base}Categorie/add">Ajouter catégorie</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Catégories <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -67,26 +70,30 @@
                                     <a href="{$url_base}User/seConnecter" class="btn btn-primary btn-flat">Se connecter</a>
                                 </div><br>
                             </li>
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="{$url_base}User/profil" class="btn btn-warning btn-flat">Mon profil</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="{$url_base}User/seDeconnecter" class="btn btn-danger btn-flat">Se Déconnecter</a>
-                                </div><br>
-                            </li>
+
                         </ul>
                     </li>
-                    {if isset($utilisateur)} }
+                    {if isset($user)}
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="fa fa-user"> 
-                                {$utiliateur->getEmail()}
+                                {$user->getNom_complet()}
                             </span>
                         </a>
+                        <ul class="dropdown-menu">
+
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="{$url_base}User/profil" class="btn btn-warning btn-flat">Mon profil</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="" class="btn btn-danger btn-flat">Se Déconnecter</a>
+                                </div><br>
+                            </li>
+                        </ul>
                     </li>
                     {/if}
                 </ul>

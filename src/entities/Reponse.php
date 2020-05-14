@@ -18,6 +18,12 @@ class Reponse
      * @JoinColumn(name="offre_id", referencedColumnName="id")
      */
     private $offre;
+    /**
+     * One Reponse has One User.
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
     
     public function __construct()
     {

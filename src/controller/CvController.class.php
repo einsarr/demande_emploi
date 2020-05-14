@@ -42,6 +42,21 @@ class CvController extends Controller{
         $data['categories'] = $categories->listeCategories();
         $this->view->load("cvs/add",$data);
     } 
+    public function save(){
+        $cv = new CvRepository();
+        
+        extract($_POST);
+        $cvObject = new Cv();
+        $cvObject->setEntete(addslashes($entete));
+        $cvObject->setContenu(addslashes($contenu));
+        $cvObject->setUser($cv->getUser($user_id));
+        $cv->addCv($cvObject);
+        $data['message_success'] = "Enrégistrement réussie";
+        $this->view->load("cvs/add",$data); 
+       
+    }
+
+
     public function liste_cv_client($client_id){
         $cvs = new CvRepository();
         

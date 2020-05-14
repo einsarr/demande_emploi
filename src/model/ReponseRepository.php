@@ -19,11 +19,11 @@ class ReponseRepository extends Model{
 	public function __construct(){
 		parent::__construct();
 	}
-	public function getEmployeur($id)
+	public function getOffre($id)
 	{
 		if($this->db != null)
 		{
-			return $this->db->getRepository('Employeur')->find(array('id' => $id));
+			return $this->db->getRepository('Offre')->find(array('id' => $id));
 		}
 	}
 	public function getProfil($id)

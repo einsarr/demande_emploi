@@ -15,7 +15,7 @@ class UserController extends Controller{
     private $url_base;
     public function __construct(){
         parent::__construct();
-        session_start();
+        
         $this->url_base="http://localhost:8080/demande_emploi/";
     }
     public function seConnecter(){  
@@ -56,9 +56,9 @@ class UserController extends Controller{
             $from = 'moussa.sarr1@3iweb.org';
             $companyName = 'SAMANE FRAMEWORK';
             $recipients = array("$email");
-            $subject = 'Samane Information';
-            $body = "<b>Salut ".$nom_complet.".<br>Samane vous remercie de votre engagement. <br>Samane PHP Framework<br></b>
-            <a href='{$this->url_base}User/confirm_email/{$passwo}'>Cliquez-ici</a> pour confirmer l'inscription";
+            $subject = 'Samane - Confirmation d inscription';
+            $body = "<b>Salut ".$nom_complet.".<br>Samane vous remercie de votre engagement.</b>
+            <h2><a href='{$this->url_base}User/confirm_email/{$passwo}'>Cliquez-ici</a> pour confirmer l'inscription</h2>";
             $replyTo = null;
             $cc = null;
             $bcc = null;
@@ -81,7 +81,7 @@ class UserController extends Controller{
         $ok = $user->updateUser($resultat);
             $data['message_success'] = "
             <h3 align='center'>
-            Your email has been successfully verified, now you can login from <a href='{$this->url_base}User/login'>Se connecter</a>
+            Your email has been successfully verified, now you can login from <a href='{$this->url_base}User/seConnecter'>Se connecter</a>
             </h3>";
          
         return $this->view->load("users/add",$data);
@@ -95,7 +95,7 @@ class UserController extends Controller{
     public function login(){
         extract($_POST);
         $userRepo = new UserRepository();
-        $utilisateur= $userRepo->login($email,sha1($password));
+        $user= $userRepo->login($email,sha1($password));
         
         // if(!$resultat)
         // {
@@ -106,15 +106,16 @@ class UserController extends Controller{
         //     $data['user'] = $resultat;
         //     $this->view->load("admin/dashboard",$data);
         // }
-
+       
         $data=[];
-        if($utilisateur != null){
-            if($utilisateur->getIs_email_verified() =='yes')
+        if($user != null){
+            if($user->getIs_email_verified() =='yes')
             {
-                //var_dump($utilisateur);exit;
-                $_SESSION['utilisateur'] = $utilisateur;
-                $data['utilisateur'] = $utilisateur;
-                return $this->view->redirect("Welcome");
+                session_start();
+                //var_dump($user);exit;
+                $_SESSION['user'] = $user;
+                $data['user'] = $user;
+                $this->view->load("admin/connexion",$data);
             }
             else
             {
@@ -127,9 +128,6 @@ class UserController extends Controller{
             $data['message_error'] = "Login et/ou mot de passe incorrecte";
             $this->view->load("users/connect",$data); 
         }
-
-
-
     }
     
     
@@ -212,6 +210,13 @@ class UserController extends Controller{
         $tdb = new UserRepository();
         $tdb->deleteUser($id);
         return $this->index();
+    }
+    public function seDeconnecter()
+    {  
+
+        session_destroy();
+        session_start();
+        $this->view->load("users/connect");   
     }
     
 }

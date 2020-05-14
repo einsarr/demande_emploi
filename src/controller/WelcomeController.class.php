@@ -15,6 +15,12 @@ class WelcomeController extends Controller{
 
     public function __construct(){
         parent::__construct();
+        //  session_start();
+        // if(!isset($_SESSION['user'])){
+        //     return $this->view->redirect('Welcome');
+        // }else{
+        //     $this->data['user'] = $_SESSION['user'];
+        // }
     }
     /** 
      * use: localhost/projectName/Welcome/
@@ -29,6 +35,7 @@ class WelcomeController extends Controller{
     }
     
     public function presentation(){
+        $data['user'] = $_SESSION['user'];
         $entreprises = new UserRepository();
         $categories = new CategorieRepository();
         $data['categories'] = $categories->listeCategories();

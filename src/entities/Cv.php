@@ -18,7 +18,7 @@ class Cv
      * @OneToOne(targetEntity="User")
      * @JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $cv;
+    private $user;
     
     public function __construct()
     {
@@ -41,13 +41,13 @@ class Cv
         $this->entete = $entete;
     }
 
-    public function getCv()
+    public function getUser()
     {
-        return $this->cv;
+        return $this->user;
     }
-    public function setCv($cv)
+    public function setUser($user)
     {
-        $this->cv = $cv;
+        $this->user = $user;
     }
 
     public function getContenu()

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-05-14 15:41:15
-  from "C:\wamp\www\demande_emploi\src\view\cvs\add.html" */
+/* Smarty version 3.1.30, created on 2020-05-14 15:56:25
+  from "C:\wamp\www\demande_emploi\src\view\offres\postuler.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ebd669b3f33e6_42283395',
+  'unifunc' => 'content_5ebd6a29523340_81380939',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '6efbec8b313053a0bcf05549c453d1db4ef5c849' => 
+    'fa30af670c6183dad57d20fe18ae52554fa491a4' => 
     array (
-      0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\cvs\\add.html',
-      1 => 1589470873,
+      0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\offres\\postuler.html',
+      1 => 1589471532,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:src/view/layout_front/footer.html' => 1,
   ),
 ),false)) {
-function content_5ebd669b3f33e6_42283395 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebd6a29523340_81380939 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -46,15 +46,16 @@ $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_sma
 </span> <?php }?>
                         </div>
                         <form method="POST" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
-Cv/save">
+Reponse/save">
                             <div class="form-group">
-                                <label>Entete</label>
-                                <input type="hidden" name="user_id" value="26">
-                                <input type="text" class="form-control" name="entete">
+                                <label>Titre</label>
+                                <input type="hidden" name="offre_id" value="<?php echo $_smarty_tpl->tpl_vars['offre']->value;?>
+">
+                                <input type="text" class="form-control" name="libelle">
                             </div>
                             <div class="form-group">
-                                <label>Contenu</label>
-                                <textarea name="contenu" class="form-control"></textarea>
+                                <label>Lettre de motivation</label>
+                                <textarea name="description" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="action" class="btn btn-primary" value="Enrégistrer" />

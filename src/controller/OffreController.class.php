@@ -53,7 +53,8 @@ class OffreController extends Controller{
         $offreObject->setEntreprise($offre->getEntreprise($entreprise_id));
         $offreObject->setCategorie($offre->getCategorie($categorie_id));
         $offre->addOffre($offreObject);
-        return $this->add();
+        $data['message_success'] = "Enrégistrement réussie";
+        $this->view->load("offres/add",$data); 
     }
     public function get($categorie_id){
         $categorie = new CategorieRepository();
@@ -65,6 +66,10 @@ class OffreController extends Controller{
         $offres = new OffreRepository();
         $data['offres'] = $offres->listeOffresByKeyWord($motCle);
         $this->view->load("offres/offres_search",$data);
+    }
+    public function postuler($offre_id){
+        $data['offre'] = $offre_id;
+        $this->view->load("offres/postuler",$data);
     }
     /** 
      * url pattern for this method

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-05-13 14:33:39
+/* Smarty version 3.1.30, created on 2020-05-14 16:26:23
   from "C:\wamp\www\demande_emploi\src\view\users\add.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ebc0543a640e8_09280888',
+  'unifunc' => 'content_5ebd712f1738a6_97016619',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dd89e7a713d203181bb995adf94581252f92e3aa' => 
     array (
       0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\users\\add.html',
-      1 => 1589380383,
+      1 => 1589473425,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:src/view/layout_front/footer.html' => 1,
   ),
 ),false)) {
-function content_5ebc0543a640e8_09280888 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebd712f1738a6_97016619 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
  <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -80,7 +80,7 @@ User/save" enctype="multipart/form-data">
                             </div>
                         -->
                             <div class="form-group">
-                                <label class="">L'employeur</label>
+                                <label class="">Le profil</label>
                                 <select class="form-control" name="profil_id" id="profil_id">
                                     <option value="">---Choisir le profil---</option>
                                     <?php
