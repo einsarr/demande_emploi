@@ -1,4 +1,4 @@
-{var_dump($resultat->getNom())}
+{include file='src/view/layout/header.html'} {include file='src/view/layout/topbar.html'} {var_dump($resultat->getNom())}
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -76,3 +76,4 @@
     </section>
     <!-- /.content -->
 </div>
+{include file='src/view/layout/footer.html'}

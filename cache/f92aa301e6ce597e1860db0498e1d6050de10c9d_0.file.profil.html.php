@@ -1,4 +1,34 @@
-{include file='src/view/layout_front/header.html'} {include file='src/view/layout_front/topbar.html'}
+<?php
+/* Smarty version 3.1.30, created on 2020-05-13 13:15:25
+  from "C:\wamp\www\demande_emploi\src\view\users\profil.html" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_5ebbf2edbf3797_14575023',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'f92aa301e6ce597e1860db0498e1d6050de10c9d' => 
+    array (
+      0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\users\\profil.html',
+      1 => 1589375700,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:src/view/layout_front/header.html' => 1,
+    'file:src/view/layout_front/topbar.html' => 1,
+    'file:src/view/layout_front/footer.html' => 1,
+  ),
+),false)) {
+function content_5ebbf2edbf3797_14575023 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+ <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="content-wrapper">
     <div class="container">
         <section class="content">
@@ -7,7 +37,8 @@
                     <!-- Profile Image -->
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="{$url_base}public/template/dist/img/user4-128x128.jpg" alt="User profile picture">
+                            <img class="profile-user-img img-responsive img-circle" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/user4-128x128.jpg" alt="User profile picture">
 
                             <h3 class="profile-username text-center">Nina Mcintire</h3>
 
@@ -85,7 +116,8 @@
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="user-block">
-                                        <img class="img-circle img-bordered-sm" src="{$url_base}public/template/dist/img/user1-128x128.jpg" alt="user image">
+                                        <img class="img-circle img-bordered-sm" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/user1-128x128.jpg" alt="user image">
                                         <span class="username">
                                   <a href="#">Jonathan Burke Jr.</a>
                                   <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -113,7 +145,8 @@
                                 <!-- Post -->
                                 <div class="post clearfix">
                                     <div class="user-block">
-                                        <img class="img-circle img-bordered-sm" src="{$url_base}public/template/dist/img/user7-128x128.jpg" alt="User Image">
+                                        <img class="img-circle img-bordered-sm" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/user7-128x128.jpg" alt="User Image">
                                         <span class="username">
                                   <a href="#">Sarah Ross</a>
                                   <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -142,7 +175,8 @@
                                 <!-- Post -->
                                 <div class="post">
                                     <div class="user-block">
-                                        <img class="img-circle img-bordered-sm" src="{$url_base}public/template/dist/img/user6-128x128.jpg" alt="User Image">
+                                        <img class="img-circle img-bordered-sm" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/user6-128x128.jpg" alt="User Image">
                                         <span class="username">
                                   <a href="#">Adam Jones</a>
                                   <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -152,21 +186,26 @@
                                     <!-- /.user-block -->
                                     <div class="row margin-bottom">
                                         <div class="col-sm-6">
-                                            <img class="img-responsive" src="{$url_base}public/template/dist/img/photo1.png" alt="Photo">
+                                            <img class="img-responsive" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/photo1.png" alt="Photo">
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-sm-6">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <img class="img-responsive" src="{$url_base}public/template/dist/img/photo2.png" alt="Photo">
+                                                    <img class="img-responsive" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/photo2.png" alt="Photo">
                                                     <br>
-                                                    <img class="img-responsive" src="{$url_base}public/template/dist/img/photo3.jpg" alt="Photo">
+                                                    <img class="img-responsive" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/photo3.jpg" alt="Photo">
                                                 </div>
                                                 <!-- /.col -->
                                                 <div class="col-sm-6">
-                                                    <img class="img-responsive" src="{$url_base}public/template/dist/img/photo4.jpg" alt="Photo">
+                                                    <img class="img-responsive" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/photo4.jpg" alt="Photo">
                                                     <br>
-                                                    <img class="img-responsive" src="{$url_base}public/template/dist/img/photo1.png" alt="Photo">
+                                                    <img class="img-responsive" src="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+public/template/dist/img/photo1.png" alt="Photo">
                                                 </div>
                                                 <!-- /.col -->
                                             </div>
@@ -282,7 +321,8 @@
                             <!-- /.tab-pane -->
 
                             <div class="tab-pane" id="settings">
-                                <form class="form-horizontal" method="post" action="{$url_base}User/resetPassword">
+                                <form class="form-horizontal" method="post" action="<?php echo $_smarty_tpl->tpl_vars['url_base']->value;?>
+User/resetPassword">
                                     <div class="form-group">
                                         <label for="inputName" class="col-sm-4 control-label">Mot de passe actuel</label>
 
@@ -324,4 +364,6 @@
         </section>
     </div>
 </div>
-{include file='src/view/layout_front/footer.html'}
+<?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
+}

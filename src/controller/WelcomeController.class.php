@@ -23,15 +23,15 @@ class WelcomeController extends Controller{
         $offres = new OffreRepository();
         $data['offres'] = $offres->listeOffres();
 
+        //var_dump($data);exit;
         $categories = new CategorieRepository();
         $data['categories'] = $categories->listeCategories();
-        $tab = array(
-            $this->view->load("layout_front/header",$data),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("admin/connexion",$data),
-            $this->view->load("layout_front/footer",),
-        ) ;
-         return $tab;    
+
+        $this->view->load("layout_front/header",$data);
+        $this->view->load("layout_front/topbar");
+        $this->view->load("admin/connexion",$data);
+        $this->view->load("layout_front/footer");
+   
     }
     
     public function presentation(){

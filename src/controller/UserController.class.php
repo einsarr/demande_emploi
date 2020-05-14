@@ -9,42 +9,25 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\UserRepository;
-use src\model\AgenceRepository;
 use src\model\ProfilRepository;
-
+use src\service\mail\SamaneMailing;
 class UserController extends Controller{
+    private $url_base;
     public function __construct(){
         parent::__construct();
+        session_start();
+        $this->url_base="http://localhost:8080/demande_emploi/";
     }
     public function seConnecter(){  
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("users/connect"),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $tab;    
+        $this->view->load("users/connect");
     } 
     public function addCompte(){  
-        $offre = new UserRepository();
         $profils = new ProfilRepository();
         $data['profils'] = $profils->listeProfils();
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("users/add",$data),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $tab;    
+        $this->view->load("users/add",$data);
     } 
     public function profil(){  
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("users/profil"),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $tab;    
+        $this->view->load("users/profil");
     } 
     /** 
      * url pattern for this method
@@ -53,27 +36,9 @@ class UserController extends Controller{
     public function save(){
         $user = new UserRepository();
         extract($_POST);
+        $avatar="fff";
+        $is_email_verified = 'no';
         $userObject = new User();
-        if(!empty($_FILES))
-        {
-            $avatar = $_FILES['avatar']['name'];
-            $file_extension = strrchr($avatar,".");
-
-            $file_tmp_name=$_FILES['avatar']['tmp_name'];
-            $file_dest ="public/avatar/".$avatar;
-            $extensions_autorisees = array('.png','.gif','.jpg','.jpeg');
-            if(in_array($file_extension,$extensions_autorisees))
-            {
-                if(move_uploaded_file($file_tmp_name,$file_dest))
-                {
-                    echo "<script>alert('Enrégistrement réussie avec succès.')</script>";
-                }else{
-                    echo "<script>alert('Une erreur s'est produit.')</script>";
-                }
-            }else{
-                echo "<script>alert('Seuls les fichiers images sont autorisés.')</script>";
-            }
-        }
         $userObject->setNom_complet(addslashes($nom_complet));
         $userObject->setEmail(addslashes($email));
         $userObject->setTelephone(addslashes($telephone));
@@ -81,42 +46,90 @@ class UserController extends Controller{
         $userObject->setAvatar(addslashes($avatar));
         $userObject->setLogin(addslashes($login));
         $userObject->setPassword(sha1(addslashes($password)));
+        $userObject->setIs_email_verified(addslashes($is_email_verified));
         $userObject->setProfil($user->getProfil($profil_id));
-        $user->addUser($userObject);
-        return $this->seConnecter();
+        $data[]=[];
+        
+            $data['message_success'] = 'Un mail vous est envoyé sur '.$email.' pour une confirmation';
+            $mail = new SamaneMailing();
+            $passwo = sha1($password);
+            $from = 'moussa.sarr1@3iweb.org';
+            $companyName = 'SAMANE FRAMEWORK';
+            $recipients = array("$email");
+            $subject = 'Samane Information';
+            $body = "<b>Salut ".$nom_complet.".<br>Samane vous remercie de votre engagement. <br>Samane PHP Framework<br></b>
+            <a href='{$this->url_base}User/confirm_email/{$passwo}'>Cliquez-ici</a> pour confirmer l'inscription";
+            $replyTo = null;
+            $cc = null;
+            $bcc = null;
+            $attachments ='' ;
+            $result = $mail->sendMail($from, $companyName, $recipients, $replyTo, $cc, $bcc, $attachments , $subject, $body);
+            if($result)
+            {
+                $user->addUser($userObject);
+                $data['message_success'] = 'Un mail vous est envoyé sur '.$email.' pour une confirmation';
+            } else {
+                $data['message_error'] = 'Message could not be sent';
+            }
+         $this->view->load("users/add",$data);
+    }
+    public function confirm_email($verification_key)
+    {
+        $user = new UserRepository();
+        $resultat = $user->confirm_email($verification_key);
+        $resultat->setIs_email_verified('yes');
+        $ok = $user->updateUser($resultat);
+            $data['message_success'] = "
+            <h3 align='center'>
+            Your email has been successfully verified, now you can login from <a href='{$this->url_base}User/login'>Se connecter</a>
+            </h3>";
+         
+        return $this->view->load("users/add",$data);
     }
     public function entreprises(){  
-        $data = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("users/entreprises"),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $data;    
+        $this->view->load("users/entreprises");  
     }
     public function deconnection(){
         return  $this->view->load("admin/connexion");
     }
     public function login(){
         extract($_POST);
-        $user = new UserRepository();
-        $resultat= $user->login($login,sha1($password));
-        if(!$resultat)
+        $userRepo = new UserRepository();
+        $utilisateur= $userRepo->login($email,sha1($password));
+        
+        // if(!$resultat)
+        // {
+        //     $data['message'] = 'Login et/ou mot de passe incorrecte';
+        //     return $this->seConnecter();
+        // }
+        // else{
+        //     $data['user'] = $resultat;
+        //     $this->view->load("admin/dashboard",$data);
+        // }
+
+        $data=[];
+        if($utilisateur != null){
+            if($utilisateur->getIs_email_verified() =='yes')
+            {
+                //var_dump($utilisateur);exit;
+                $_SESSION['utilisateur'] = $utilisateur;
+                $data['utilisateur'] = $utilisateur;
+                return $this->view->redirect("Welcome");
+            }
+            else
+            {
+                $data['message_error'] = "Veuillez confirmer votre inscription";
+                 $this->view->load("users/connect",$data); 
+            }
+        }
+        else
         {
-            $data['message'] = 'Login et/ou mot de passe incorrecte';
-            return $this->seConnecter();
+            $data['message_error'] = "Login et/ou mot de passe incorrecte";
+            $this->view->load("users/connect",$data); 
         }
-        else{
-            $data['user'] = $resultat;
-            $tab = array(
-                $this->view->load("layout/header"),
-                $this->view->load("layout/topbar"),
-                //$this->view->load("layout/sidebar"),
-                $this->view->load("admin/dashboard",$data),
-                $this->view->load("layout/footer"),
-            );
-        }
-        return $tab;
+
+
+
     }
     
     
@@ -127,11 +140,9 @@ class UserController extends Controller{
     public function edit($id){
         
         $user = new UserRepository();
-        $agence = new AgenceRepository();
         $profil = new ProfilRepository();
         $data['user'] = $user->getUser($id);
-        $data['agences'] = $agence->listeAgence();
-        $data['profils'] = $profil->listeProfil();
+        $data['profils'] = $profil->listeProfils();
 
         $tab = array(
             $this->view->load("layout/header"),
@@ -151,7 +162,7 @@ class UserController extends Controller{
         extract($_POST);
         $userObject = new User();
         $userObject->setId($id);
-        $userObject->setPrenom(addslashes($prenom));
+        $userObject->setPrenomNom(addslashes($prenom));
         $userObject->setNom(addslashes($nom));
         $userObject->setEmail(addslashes($email));
         $userObject->setTelephone(addslashes($telephone));

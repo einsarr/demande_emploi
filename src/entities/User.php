@@ -22,6 +22,9 @@ class User
     private $login;
     /** @Column(type="string") **/
     private $password;
+    /** @Column(type="string") **/
+    private $is_email_verified;
+   
     /**
      * Many Users have one Profil. This is the owning side.
      * @ManyToOne(targetEntity="Profil", inversedBy="users")
@@ -61,7 +64,14 @@ class User
     {
         $this->avatar = $avatar;
     }
-
+    public function getIs_email_verified()
+    {
+        return $this->is_email_verified;
+    }
+    public function setIs_email_verified($is_email_verified)
+    {
+        $this->is_email_verified = $is_email_verified;
+    }
     public function getNom_complet()
     {
         return $this->nom_complet;
@@ -70,14 +80,7 @@ class User
     {
         $this->nom_complet = $nom_complet;
     }
-    public function getNom()
-    {
-        return $this->nom;
-    }
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    }
+    
 
     public function getTelephone()
     {
@@ -142,6 +145,15 @@ class User
     public function setOffres($offres)
     {
         $this->offres = $offres;
+    }
+    public function hasProfil($libelle)
+    {
+        $bol = 0;
+        if ($this->profil->getLibelle() == $libelle)
+        {
+            $bol = 1;
+        }
+        return $bol;
     }
     
 }

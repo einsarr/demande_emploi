@@ -18,10 +18,21 @@ class UserRepository extends Model{
 	 */
 	public function __construct(){
 		parent::__construct();
+		
 	}
-	public function login($login,$password)
+	/*public function login($email,$password)
 	{
-		return $this->db->getRepository('user')->findBy(array('login' => $login, 'password' => $password));
+		return $this->db->getRepository('user')->findBy(array('email' => $email, 'password' => $password));
+	}
+	*/
+	public function login($email,$password)
+	{
+		return $this->db->createQuery("SELECT u FROM User u WHERE u.email=:email AND u.password=:password")
+						->setParameter('email',$email)
+						->setParameter('password',$password)
+						//->getResult();
+						//Objet
+						->getSingleResult();
 	}
 	
 	public function getProfil($id)
@@ -30,6 +41,19 @@ class UserRepository extends Model{
 		{
 			return $this->db->getRepository('Profil')->find(array('id' => $id));
 		}
+	}
+	public function email_existe($email)
+	{
+		return $this->db->createQuery("SELECT u FROM User u WHERE u.email=:email")
+						->setParameter('email',$email)
+						//->getSingleResult();
+						->getResult();
+	}
+	public function confirm_email($verification_key)
+	{
+		return $this->db->createQuery("SELECT u FROM User u WHERE u.password=:password")
+						->setParameter('password',$verification_key)
+						->getSingleResult();
 	}
 	public function addUser($user)
 	{
@@ -87,13 +111,14 @@ class UserRepository extends Model{
 			$getUser = $this->db->find('User', $user->getId());
 			if($getUser != null)
 			{
-				$getUser->setPrenom($user->getPrenom());
-				$getUser->setNom($user->getNom());
+				$getUser->setNom_complet($user->getNom_complet());
 				$getUser->setEmail($user->getEmail());
 				$getUser->setTelephone($user->getTelephone());
 				$getUser->setAdresse($user->getAdresse());
-				$getUser->setAgence($user->getAgence());
+				$getUser->setAvatar($user->getAvatar());
+				$getUser->setPassword($user->getPassword());
 				$getUser->setProfil($user->getProfil());
+				$getUser->setIs_email_verified($user->getIs_email_verified());
 				$this->db->flush();
 			}else {
 				die("Objet ".$user->getId()." does not existe!!");

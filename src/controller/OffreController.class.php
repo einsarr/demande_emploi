@@ -57,32 +57,25 @@ class OffreController extends Controller{
         $offreObject->setlibelle(addslashes($libelle));
         $offreObject->setFavori(addslashes($favori));
         $offreObject->setEntreprise($offre->getEntreprise($entreprise_id));
-        $offreObject->setCategories($offre->getCategorie($categorie_id));
+        $offreObject->setCategorie($offre->getCategorie($categorie_id));
         $offre->addOffre($offreObject);
         return $this->add();
     }
     public function get($categorie_id){
         $categorie = new CategorieRepository();
         $data['categorie'] = $categorie->getCategorie($categorie_id);
-        $tab = array(
-            $this->view->load("layout_front/header",$data),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("offres/offres_categorie",$data),
-            $this->view->load("layout_front/footer",),
-        );
-        return $tab;
+            $this->view->load("layout_front/header",$data);
+            $this->view->load("layout_front/topbar");
+            $this->view->load("offres/offres_categorie",$data);
     }
     public function offre_search(){
         extract($_POST);
         $offres = new OffreRepository();
         $data['offres'] = $offres->listeOffresByKeyWord($motCle);
-        $tab = array(
-            $this->view->load("layout_front/header",$data),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("offres/offres_search",$data),
-            $this->view->load("layout_front/footer",),
-        );
-        return $tab;
+        $this->view->load("layout_front/header",$data);
+        $this->view->load("layout_front/topbar");
+        $this->view->load("offres/offres_search",$data);
+        $this->view->load("layout_front/footer");
     }
     /** 
      * url pattern for this method

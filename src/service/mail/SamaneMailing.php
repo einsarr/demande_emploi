@@ -14,10 +14,10 @@ class SamaneMailing
             //Server settings
             $mail->SMTPDebug = 0;//2;                                       // Enable verbose debug output
             $mail->isSMTP();                                            // Set mailer to use SMTP
-            $mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->Host       = 'ssl://mail.3iweb.org';  // Specify main and backup SMTP servers
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'ngorseckjee@gmail.com';                     // SMTP username
-            $mail->Password   = 'seckangor123';                               // SMTP password
+            $mail->Username   = 'moussa.sarr1@3iweb.org';                     // SMTP username
+            $mail->Password   = 'P@sser123';                               // SMTP password
             $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
             $mail->Port       = 465;                                    // TCP port to connect to
 
