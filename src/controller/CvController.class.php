@@ -9,7 +9,7 @@ VOUS ETES LIBRE DE TOUTE UTILISATION.
 ===================================================*/ 
 use libs\system\Controller; 
 use src\model\CvRepository;
-use src\model\EmployeurRepository;
+use src\model\CategorieRepository;
 use src\model\ClientRepository;
 use src\model\AgenceRepository;
 
@@ -38,13 +38,9 @@ class CvController extends Controller{
         return $tab;
     }
     public function add(){  
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("cvs/add"),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $tab;    
+        $categories = new CategorieRepository();
+        $data['categories'] = $categories->listeCategories();
+        $this->view->load("cvs/add",$data);
     } 
     public function liste_cv_client($client_id){
         $cvs = new CvRepository();

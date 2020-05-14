@@ -1,27 +1,34 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-05-13 16:47:54
+/* Smarty version 3.1.30, created on 2020-05-14 14:03:14
   from "C:\wamp\www\demande_emploi\src\view\offres\offres_search.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ebc24bad2a407_72382394',
+  'unifunc' => 'content_5ebd4fa244eb51_59826444',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd3935cabcf5549eed599356cb316eb284ed4692d' => 
     array (
       0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\offres\\offres_search.html',
-      1 => 1587693384,
+      1 => 1589464989,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:src/view/layout_front/header.html' => 1,
+    'file:src/view/layout_front/topbar.html' => 1,
+    'file:src/view/layout_front/footer.html' => 1,
   ),
 ),false)) {
-function content_5ebc24bad2a407_72382394 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebd4fa244eb51_59826444 (Smarty_Internal_Template $_smarty_tpl) {
+$_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+ <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
 <div class="content-wrapper">
     <div class="container">
         <section class="content">
@@ -35,7 +42,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['offre']->value) {
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3></h3>
+                            <h4 class="text-danger"><?php echo $_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getLibelle();?>
+ </h4>
                             <?php echo $_smarty_tpl->tpl_vars['offre']->value->getLibelle();?>
 
                             <p>
@@ -59,5 +67,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
             </div>
         </section>
     </div>
-</div><?php }
+</div>
+<?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }

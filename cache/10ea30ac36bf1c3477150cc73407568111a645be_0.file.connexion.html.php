@@ -1,28 +1,37 @@
 <?php
-/* Smarty version 3.1.30, created on 2020-05-13 16:12:17
+/* Smarty version 3.1.30, created on 2020-05-14 13:53:47
   from "C:\wamp\www\demande_emploi\src\view\admin\connexion.html" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5ebc1c61b606b2_66278517',
+  'unifunc' => 'content_5ebd4d6b32eb77_06728701',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '10ea30ac36bf1c3477150cc73407568111a645be' => 
     array (
       0 => 'C:\\wamp\\www\\demande_emploi\\src\\view\\admin\\connexion.html',
-      1 => 1589386335,
+      1 => 1589464424,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:src/view/layout_front/header.html' => 1,
+    'file:src/view/layout_front/topbar.html' => 1,
+    'file:src/view/layout_front/footer.html' => 1,
   ),
 ),false)) {
-function content_5ebc1c61b606b2_66278517 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ebd4d6b32eb77_06728701 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Full Width Column -->
+<?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/header.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+ <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/topbar.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+
 <div class="content-wrapper">
     <div class="container">
         <!-- Main content -->
@@ -79,30 +88,45 @@ foreach ($_from as $_smarty_tpl->tpl_vars['offre']->value) {
 ?>
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
+
+                    <?php if ($_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getId() == 1) {?>
                     <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h4 class="text-danger"><?php echo $_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getLibelle();?>
+                        <?php } elseif ($_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getId() == 2) {?>
+                        <div class="small-box bg-green">
+                            <?php } elseif ($_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getId() == 3) {?>
+                            <div class="small-box bg-red">
+                                <?php } elseif ($_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getId() == 4) {?>
+                                <div class="small-box bg-orange">
+                                    <?php } elseif ($_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getId() == 5) {?>
+                                    <div class="small-box bg-yellow">
+                                        <?php } else { ?>
+                                        <div class="small-box bg-blue">
+                                            <?php }?>
+
+
+
+                                            <div class="inner">
+                                                <h4 class="text-danger"><?php echo $_smarty_tpl->tpl_vars['offre']->value->getCategorie()->getLibelle();?>
  </h4>
 
-                            <p><?php echo $_smarty_tpl->tpl_vars['offre']->value->getlibelle();?>
+                                                <p><?php echo $_smarty_tpl->tpl_vars['offre']->value->getlibelle();?>
 </p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <?php
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer text-danger">postuler <i class="fa fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
  <?php }?>
-            </div>
+                                </div>
         </section>
         <!-- /.content -->
-        </!--<img>
-        <!-- /.container -->
-        </img><?php }
+        <?php $_smarty_tpl->_subTemplateRender("file:src/view/layout_front/footer.html", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+}
 }

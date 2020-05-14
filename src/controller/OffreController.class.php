@@ -24,7 +24,7 @@ class OffreController extends Controller{
 
     public function index(){
         $offre = new OffreRepository();
-        $data['offres'] = $offre->listeOffre();
+        $data['offres'] = $offre->listeOffres();
         $tab = array(
             $this->view->load("layout/header"),
             $this->view->load("layout/sidebar"),
@@ -37,13 +37,7 @@ class OffreController extends Controller{
     public function add(){
         $categories = new CategorieRepository();
         $data['categories'] = $categories->listeCategories();
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("offres/add",$data),
-            $this->view->load("layout_front/footer"),
-        );
-        return $tab;
+        $this->view->load("offres/add",$data);
     }
      /** 
      * url pattern for this method
@@ -64,18 +58,13 @@ class OffreController extends Controller{
     public function get($categorie_id){
         $categorie = new CategorieRepository();
         $data['categorie'] = $categorie->getCategorie($categorie_id);
-            $this->view->load("layout_front/header",$data);
-            $this->view->load("layout_front/topbar");
-            $this->view->load("offres/offres_categorie",$data);
+        $this->view->load("offres/offres_categorie",$data);
     }
     public function offre_search(){
         extract($_POST);
         $offres = new OffreRepository();
         $data['offres'] = $offres->listeOffresByKeyWord($motCle);
-        $this->view->load("layout_front/header",$data);
-        $this->view->load("layout_front/topbar");
         $this->view->load("offres/offres_search",$data);
-        $this->view->load("layout_front/footer");
     }
     /** 
      * url pattern for this method
@@ -138,7 +127,7 @@ class OffreController extends Controller{
     public function liste(){
         $tdb = new OffreRepository();
         
-        $data['offres'] = $tdb->listeOffre();
+        $data['offres'] = $tdb->listeOffres();
         return $this->view->load("offres/liste", $data);
     }
     

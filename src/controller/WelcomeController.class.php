@@ -22,40 +22,23 @@ class WelcomeController extends Controller{
     public function index(){  
         $offres = new OffreRepository();
         $data['offres'] = $offres->listeOffres();
-
         //var_dump($data);exit;
         $categories = new CategorieRepository();
         $data['categories'] = $categories->listeCategories();
-
-        $this->view->load("layout_front/header",$data);
-        $this->view->load("layout_front/topbar");
         $this->view->load("admin/connexion",$data);
-        $this->view->load("layout_front/footer");
-   
     }
     
     public function presentation(){
         $entreprises = new UserRepository();
+        $categories = new CategorieRepository();
+        $data['categories'] = $categories->listeCategories();
         $data['entreprises'] = $entreprises->listeEntreprises();  
-        $tab = array(
-            $this->view->load("layout_front/header"),
-            $this->view->load("layout_front/topbar"),
-            $this->view->load("layout_front/presentation",$data),
-            $this->view->load("layout_front/footer"),
-        ) ;
-         return $tab;    
+        $this->view->load("layout_front/presentation",$data);
     } 
     
     
     public function dashboard(){  
-       $data = array(
-           $this->view->load("layout/header"),
-           $this->view->load("layout/topbar"),
-           $this->view->load("layout/sidebar"),
-           $this->view->load("admin/dashboard"),
-           $this->view->load("layout/footer"),
-       ) ;
-        return $data;   
+        $this->view->load("admin/dashboard");
     } 
     
 }

@@ -1,4 +1,6 @@
 <!-- Full Width Column -->
+{include file='src/view/layout_front/header.html'} {include file='src/view/layout_front/topbar.html'}
+
 <div class="content-wrapper">
     <div class="container">
         <!-- Main content -->
@@ -48,22 +50,36 @@
                 {if isset($offres)} {foreach from=$offres item=offre}
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
-                    <div class="small-box bg-aqua">
-                        <div class="inner">
-                            <h4 class="text-danger">{$offre->getCategorie()->getLibelle()} </h4>
 
-                            <p>{$offre->getlibelle()}</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                {/foreach} {/if}
-            </div>
+                    {if $offre->getCategorie()->getId()==1}
+                    <div class="small-box bg-aqua">
+                        {elseif $offre->getCategorie()->getId()==2}
+                        <div class="small-box bg-green">
+                            {elseif $offre->getCategorie()->getId()==3}
+                            <div class="small-box bg-red">
+                                {elseif $offre->getCategorie()->getId()==4}
+                                <div class="small-box bg-orange">
+                                    {elseif $offre->getCategorie()->getId()==5}
+                                    <div class="small-box bg-yellow">
+                                        {else}
+                                        <div class="small-box bg-blue">
+                                            {/if}
+
+
+
+                                            <div class="inner">
+                                                <h4 class="text-danger">{$offre->getCategorie()->getLibelle()} </h4>
+
+                                                <p>{$offre->getlibelle()}</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="ion ion-bag"></i>
+                                            </div>
+                                            <a href="#" class="small-box-footer text-danger">postuler <i class="fa fa-arrow-circle-right"></i></a>
+                                        </div>
+                                    </div>
+                                    {/foreach} {/if}
+                                </div>
         </section>
         <!-- /.content -->
-        </!--<img>
-        <!-- /.container -->
-        </img>
+        {include file='src/view/layout_front/footer.html'}
