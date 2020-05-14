@@ -57,8 +57,9 @@ class OffreController extends Controller{
         $this->view->load("offres/add",$data); 
     }
     public function get($categorie_id){
-        $categorie = new CategorieRepository();
-        $data['categorie'] = $categorie->getCategorie($categorie_id);
+        $categories = new CategorieRepository();
+        $data['categories'] = $categories->listeCategories();
+        $data['categorie'] = $categories->getCategorie($categorie_id);
         $this->view->load("offres/offres_categorie",$data);
     }
     public function offre_search(){
